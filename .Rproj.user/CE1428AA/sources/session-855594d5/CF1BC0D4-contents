@@ -1,0 +1,49 @@
+# 1-6 1-7
+A <- matrix(c(1,2,2,1,3,4), nrow =2 , ncol = 3)
+B <- matrix(c(1,2,3,0,1,2), nrow =3 , ncol = 2)
+C <- matrix(c(3,4,2,-1,1,1,3,5,3), nrow =3 , ncol = 3)
+D <- matrix(c(3,2,-2,4), nrow =2 , ncol = 2)
+E <- matrix(c(2,0,3,-4,1,2,5,4,1), nrow =3 , ncol = 3)
+F <- matrix(c(-4,5,2,3), nrow =2 , ncol = 2)
+O <- matrix(c(0,0,0,0,0,0,0,0,0), nrow =3 , ncol = 3)
+
+#1-6
+t(A)
+t(t(A))
+t(C+E)
+t(C)+t(E)
+t(2*D+3*F)
+D-t(D)
+2*t(A)+B
+t(3*D-2*F)
+
+#1-7
+t(2*A)
+t(A-B) #無法執行
+t(3*t(B)-2*A)
+t(3*t(A)-5*t(B)) #無法執行
+t(-1*A)
+-1*t(A)
+t(C+E+t(F)) #無法執行
+
+
+#1-8 1-9
+A <- matrix(c(3,0,0,2), nrow =2 , ncol = 2)
+a <- matrix(c(1,0,0,1), nrow =2 , ncol = 2)
+b <- matrix(c(1,0,0,0), nrow =2 , ncol = 2)
+
+#1-11
+A <- matrix(c(1,1,0,0,1,1,1,0,1), nrow =3 , ncol = 3)
+B <- matrix(c(0,1,1,1,0,1,1,1,0), nrow =3 , ncol = 3)
+C <- matrix(c(1,0,1,1,1,0,0,1,1), nrow =3 , ncol = 3)
+S <- A+B
+(B+C)%%2
+(A+B+C)%%2
+(A+t(C))%%2
+(B-C)%%2
+
+#1-12
+A <- matrix(c(1,1,0,0), nrow =2 , ncol = 2)
+B <- matrix(c(1,0,0,1), nrow =2 , ncol = 2)
+C <- matrix(c(1,0,1,0), nrow =2 , ncol = 2)
+D <- matrix(c(0,1,0,0), nrow =2 , ncol = 2)
