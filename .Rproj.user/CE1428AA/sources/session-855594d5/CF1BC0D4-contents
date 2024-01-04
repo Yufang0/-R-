@@ -262,8 +262,96 @@ x<-rref(Ab)[,4];x
 
 #6-27 用高斯消去法解線性方程組 Ax = b [A b]=>[I x]
 Ab <- matrix(c(1,1,1,2,3,0,3,0,2,1,1,1,8,7,3), nrow =3 , ncol = 5)
-x<-rref(Ab)[,4:5];x #無限多組解
+x<-rref(Ab);x #無限多組解
 Ab <- matrix(c(1,2,3,3,-2,-1,0,-3,3,-3,1,0,4,5,2,7), nrow =4 , ncol = 4)
 x<-rref(Ab);x #無解
 
-#6-31
+#6-31 f(x)=Ax=b 求x (高斯消去法)
+A <- matrix(c(4,2,2,1,-1,2,3,3,0), nrow =3 , ncol = 3)
+b <- matrix(c(4,5,-1),nrow =3 , ncol = 1)
+Ab <- cbind(A,b)
+x<-rref(Ab);x #無限多組解
+
+#6-32 f(x)=Ax=b 求x (高斯消去法)
+A <- matrix(c(1,-3,-2,2,-2,0,3,-1,2), nrow =3 , ncol = 3)
+b <- matrix(c(2,2,4),nrow =3 , ncol = 1)
+Ab <- cbind(A,b)
+x<-rref(Ab);x #無限多組解
+
+#6-37 f(x)=Ax=0 求x非明顯解 (高斯消去法)
+A <- matrix(c(1,1,0,0,1,1,5,1,-4), nrow =3 , ncol = 3)
+I <- diag(1, 3) #單位矩陣
+b <- matrix(c(0,0,0),nrow =3 , ncol = 1)
+Ab <- cbind((-4*I-A),b)
+x<-rref(Ab);x #無限多組解
+
+#6-41 Ax=4A 求x非明顯解 (高斯消去法,(4I-A)x=0)
+A <- matrix(c(4,0,1,2), nrow =2 , ncol = 2)
+I <- diag(1, 2) #單位矩陣
+b <- matrix(c(0,0),nrow =2 , ncol = 1)
+Ab <- cbind((4*I-A),b)
+x<-rref(Ab);x #無限多組解
+
+
+
+#Unit 1.7
+#7-1 證明A矩陣是非奇異
+A <- matrix(c(2,-2,1,3), nrow =2 , ncol = 2)
+solve(A) #有反矩陣，是非奇異
+
+#7-3 A矩陣是否奇異
+A <- matrix(c(1,3,1,4), nrow =2 , ncol = 2)
+solve(A) #有反矩陣，是非奇異
+
+#7-5.a 求反矩陣(用高斯消去法) [A I] => [I A^-1]
+A <- matrix(c(1,-2,3,6), nrow =2 , ncol = 2);
+I <- diag(1, 2);Ab <- cbind(A,I)
+x<-rref(Ab)[,3:4];rref(Ab);x
+
+#7-5.b 求反矩陣(用高斯消去法) [A I] => [I A^-1]
+A <- matrix(c(1,1,0,2,1,1,3,2,2), nrow =3 , ncol = 3)
+I <- diag(1, 3);Ab <- cbind(A,I)
+x<-rref(Ab)[,4:6];rref(Ab);x
+
+#7-5.c 求反矩陣(用高斯消去法) [A I] => [I A^-1]
+A <- matrix(c(1,1,1,1,1,2,-1,3,1,-1,2,3,1,2,1,2), nrow =4 , ncol = 4)
+I <- diag(1, 4);Ab <- cbind(A,I)
+x<-rref(Ab)[,5:8];rref(Ab);x
+
+
+#7-11.a Ax=0 線性方程式是否有非明顯解 (高斯消去法)
+#第一步要先把線性方程式的系數轉換為矩陣
+A <- matrix(c(1,0,1,2,2,2,3,2,3), nrow =3 , ncol = 3)
+b <- matrix(c(0,0,0),nrow =3 , ncol = 1)
+Ab <- cbind(A,b)
+x<-rref(Ab);x #無限多組解，有非明顯解
+
+#7-11.b Ax=0 線性方程式是否有非明顯解 (高斯消去法)
+#第一步要先把線性方程式的系數轉換為矩陣
+A <- matrix(c(2,1,-3,1,-2,-1,-1,-3,2), nrow =3 , ncol = 3)
+b <- matrix(c(0,0,0),nrow =3 , ncol = 1)
+Ab <- cbind(A,b)
+x<-rref(Ab);x #無限多組解，有非明顯解
+
+#7-13 求矩陣(用高斯消去法) A = (A^-1)^-1
+A1 <- matrix(c(2,1,3,4), nrow =2 , ncol = 2)
+I <- diag(1, 2);Ab <- cbind(A1,I)
+x<-rref(Ab)[,3:4];rref(Ab);x
+
+#7-18 求反矩陣、轉置矩陣的反矩陣(用高斯消去法)
+A <- matrix(c(1,2,3,7), nrow =2 , ncol = 2)
+I <- diag(1, 2);Ab <- cbind(A,I)
+x<-rref(Ab)[,3:4];rref(Ab)
+Atb <- cbind(t(A),I)
+xt<-rref(Atb)[,3:4];rref(Atb)
+x;xt
+
+#7-24 求(AB)^-1 A1就是A^-1以此類推 (AB)^-1=(B^-1)(A^-1)
+A1 <- matrix(c(3,1,2,3), nrow =2 , ncol = 2)
+B1 <- matrix(c(2,3,5,-2), nrow =2 , ncol = 2)
+B1%*%A1
+
+#7-25 Ax=b 求x (x=(A^-1)b)
+A1 <- matrix(c(2,4,3,1), nrow =2 , ncol = 2)
+b <- matrix(c(5,3), nrow =2 , ncol = 1)
+x <- A1%*%b;x
